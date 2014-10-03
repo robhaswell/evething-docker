@@ -15,6 +15,11 @@ USER evething
 RUN git clone git://github.com/madcowfred/evething.git
 
 USER root
-RUN pip install -r evething/requirements.txt
+ADD requirements.txt /opt/requirements.txt
+RUN pip install -r /opt/evething/requirements.txt
+RUN pip install -r /opt/requirements.txt
 
 USER evething
+ADD local_settings.py /opt/evething/evething/local_settings.py
+
+CMD ["/usr/local/bin/python", "/opt/evething/manage.py", "runfcgi", "host=0.0.0.0", "port=8080", "daemonize=false"]
