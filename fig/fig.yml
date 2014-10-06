@@ -1,3 +1,7 @@
+#
+# Example fig.yml to deploy evething.
+#
+
 web:
     build: evething
     ports:
@@ -23,7 +27,7 @@ lb:
         - web
 mail:
     image: elsdoerfer/exim-sender
-    dns:
+    dns: # Docker's DNS is not compatible with Exim
         - 8.8.8.8
         - 4.4.4.4
     environment:
@@ -33,10 +37,9 @@ redis:
 memcached:
     image: sylvainlasnier/memcached
 celery:
-    image: fig_web
+    image: fig_web # This is the web container's built image - depends on the directory name of fig.yml
     command: celery worker -A evething -B -Q et_high,et_medium,et_low -c 2 -b redis://fig_redis_1/
     working_dir: /opt/evething
     links:
         - db
         - redis
-# add comments
