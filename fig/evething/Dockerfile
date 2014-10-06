@@ -1,8 +1,6 @@
 # Dockerfile for EVEthing
 # (https://github.com/madcowfred/evething)
-
 FROM python:2.7
-
 MAINTAINER Rob Haswell <rob@clusterhq.com>
 
 RUN adduser --system --ingroup staff evething

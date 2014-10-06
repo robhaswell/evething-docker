@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Docker trounces this file so we need to change it at runtime.
-
-echo 'nameserver 8.8.8.8' > /etc/resolv.conf
-echo 'nameserver 4.4.4.4' >> /etc/resolv.conf
-
-exec /exim

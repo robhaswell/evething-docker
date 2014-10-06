@@ -3,8 +3,8 @@ web:
     ports:
         - "8080"
     environment:
-        ADMIN_NAME: Rob Haswell
-        ADMIN_EMAIL: me@robhaswell.co.uk
+        ADMIN_NAME: Administrator
+        ADMIN_EMAIL: someone@somewhere.com
         SECRET_KEY: "z30v^d(e(ka5h-kxpo2#ne7fey%ks9lws!4yy+=yhy+b-6(z!0"
     links:
         - db
