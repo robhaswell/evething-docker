@@ -1,0 +1,2 @@
+fig up
+docker run --volumes-from fig_web_1 --link fig_db_1:fig_db_1 -ti fig_web /opt/install.sh

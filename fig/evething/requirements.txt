@@ -2,3 +2,4 @@ celery
 flup
 psycopg2
 python-memcached
+redis

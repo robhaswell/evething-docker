@@ -13,8 +13,6 @@ web:
         - memcached
 db:
     image: postgres
-    ports:
-        - "5432"
 lb:
     build: nginx
     ports:
@@ -34,6 +32,11 @@ redis:
     image: redis
 memcached:
     image: sylvainlasnier/memcached
-# memcache:
-# redis:
+celery:
+    image: fig_web
+    command: celery worker -A evething -B -Q et_high,et_medium,et_low -c 2 -b redis://fig_redis_1/
+    working_dir: /opt/evething
+    links:
+        - db
+        - redis
 # add comments

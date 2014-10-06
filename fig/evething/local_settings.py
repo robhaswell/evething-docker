@@ -80,7 +80,7 @@ STAGGER_APITASK_STARTUP = True
 PRICE_URL = 'http://goonmetrics.com/api/price_data/?station_id=60003760&type_id=%s'
 
 # Celery broker URL - http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#choosing-a-broker
-BROKER_URL = 'redis://fig_redis_1:6379/0'
+BROKER_URL = 'redis://fig_redis_1/'
 
 # Cache for various things. You really want to use memcache if at all
 # possible, other caches do not guarantee atomic increments.
