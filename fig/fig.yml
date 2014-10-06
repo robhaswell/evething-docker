@@ -1,13 +1,14 @@
 web:
     build: evething
     ports:
-        - "8080:8000"
+        - "8080"
     environment:
         ADMIN_NAME: Rob Haswell
         ADMIN_EMAIL: me@robhaswell.co.uk
         SECRET_KEY: "z30v^d(e(ka5h-kxpo2#ne7fey%ks9lws!4yy+=yhy+b-6(z!0"
     links:
         - db
+        - mail
     volumes:
         - /opt/evething/static
 db:
@@ -15,10 +16,12 @@ db:
     ports:
         - "5432"
 lb:
-    image: nginx
+    build: nginx
     ports:
-        - "80:8080"
+        - "80:80"
     links:
         - web
     volumes_from:
         - web
+mail:
+    build: mail

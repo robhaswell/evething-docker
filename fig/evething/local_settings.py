@@ -42,6 +42,8 @@ DATABASES = {
     },
 }
 
+EMAIL_HOST = b"mail_1"
+
 # change this to the public facing directory for static files, needed for
 # './manage.py collectstatic' to work
 STATIC_ROOT = '/evething/data/static/'

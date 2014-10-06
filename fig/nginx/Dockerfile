@@ -2,4 +2,4 @@ FROM nginx
 
 MAINTAINER Rob Haswell <rob@clusterhq.com>
 
-ADD nginx.conf /etc/nginx/nginx.conf
+ADD evething.conf /etc/nginx/conf.d/default.conf
