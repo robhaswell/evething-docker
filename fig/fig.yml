@@ -1,5 +1,5 @@
 web:
-    build: .
+    build: evething
     ports:
         - "8080:8000"
     environment:
@@ -8,7 +8,17 @@ web:
         SECRET_KEY: "z30v^d(e(ka5h-kxpo2#ne7fey%ks9lws!4yy+=yhy+b-6(z!0"
     links:
         - db
+    volumes:
+        - /opt/evething/static
 db:
     image: postgres
     ports:
         - "5432"
+lb:
+    image: nginx
+    ports:
+        - "80:8080"
+    links:
+        - web
+    volumes_from:
+        - web
