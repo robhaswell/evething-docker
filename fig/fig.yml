@@ -25,3 +25,6 @@ lb:
         - web
 mail:
     build: mail
+# memcache:
+# redis:
+# add comments
