@@ -34,7 +34,7 @@ DATABASES = {
     # this database should contain a current version of the Static Data Export
     'import': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/sqlite-latest.sqlite',
+        'NAME': '/tmp/sqlite-latest.sqlite',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -46,7 +46,7 @@ EMAIL_HOST = b"mail_1"
 
 # change this to the public facing directory for static files, needed for
 # './manage.py collectstatic' to work
-STATIC_ROOT = '/evething/data/static/'
+STATIC_ROOT = '/var/lib/evething/static/'
 # override the default '/static/' for static files
 #STATIC_URL = 'http://static.evething.home'
 
@@ -80,7 +80,7 @@ STAGGER_APITASK_STARTUP = True
 PRICE_URL = 'http://goonmetrics.com/api/price_data/?station_id=60003760&type_id=%s'
 
 # Celery broker URL - http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#choosing-a-broker
-BROKER_URL = 'redis://localhost:6379/0'
+BROKER_URL = 'redis://fig_redis_1:6379/0'
 
 # Cache for various things. You really want to use memcache if at all
 # possible, other caches do not guarantee atomic increments.
@@ -90,7 +90,7 @@ CACHES = {
     'default': {
         #'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+        'LOCATION': 'fig_memcached_1:11211',
         'KEY_PREFIX': 'evething_',
     }
 }

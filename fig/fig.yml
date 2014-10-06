@@ -9,8 +9,8 @@ web:
     links:
         - db
         - mail
-    volumes:
-        - /opt/evething/static
+        - redis
+        - memcached
 db:
     image: postgres
     ports:
@@ -24,7 +24,16 @@ lb:
     volumes_from:
         - web
 mail:
-    build: mail
+    image: elsdoerfer/exim-sender
+    dns:
+        - 8.8.8.8
+        - 4.4.4.4
+    environment:
+        ALLOWED_HOSTS: "*"
+redis:
+    image: redis
+memcached:
+    image: sylvainlasnier/memcached
 # memcache:
 # redis:
 # add comments
