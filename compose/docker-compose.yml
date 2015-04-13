@@ -3,43 +3,44 @@
 #
 
 web:
-    build: evething
-    ports:
-        - "8080"
-    environment:
-        ADMIN_NAME: Administrator
-        ADMIN_EMAIL: someone@somewhere.com
-        SECRET_KEY: "change this"
+  build: evething
+  ports:
+    - "8080"
+  environment:
+    ADMIN_NAME: Administrator
+    ADMIN_EMAIL: someone@somewhere.com
+    SECRET_KEY: "change this"
     links:
-        - db
-        - mail
-        - redis
-        - memcached
+      - db
+      - mail
+      - redis
+      - memcached
 db:
-    image: postgres
+  image: postgres
 lb:
-    build: nginx
-    ports:
-        - "80:80"
-    links:
-        - web
-    volumes_from:
-        - web
+  build: nginx
+  ports:
+    - "80:80"
+  links:
+    - web
+  volumes_from:
+    - web
 mail:
-    image: elsdoerfer/exim-sender
-    dns: # Docker's DNS is not compatible with Exim
+  image: elsdoerfer/exim-sender
+  dns: # Docker's DNS is not compatible with Exim
         - 8.8.8.8
         - 4.4.4.4
-    environment:
-        ALLOWED_HOSTS: "*"
+  environment:
+    ALLOWED_HOSTS: "*"
 redis:
-    image: redis
+  image: redis
 memcached:
-    image: sylvainlasnier/memcached
+  image: sylvainlasnier/memcached
 celery:
-    image: fig_web # This is the web container's built image - depends on the directory name of fig.yml
-    command: celery worker -A evething -B -Q et_high,et_medium,et_low -c 2 -b redis://fig_redis_1/
-    working_dir: /opt/evething
-    links:
-        - db
-        - redis
+  image: fig_web # This is the web container's built image - depends on the directory name of fig.yml
+  command: celery worker -A evething -B -Q et_high,et_medium,et_low -c 2 -b redis://fig_redis_1/
+  working_dir: /opt/evething
+  links:
+    - db
+    - redis
+# vim: set sw=2 ts=2 sts=2 expandtab:
