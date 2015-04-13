@@ -1,2 +1,2 @@
-fig up
-docker run --volumes-from fig_web_1 --link fig_db_1:fig_db_1 -ti fig_web /opt/install.sh
+compose up
+docker run --volumes-from compose_web_1 --link compose_db_1:compose_db_1 -ti compose_web /opt/install.sh
