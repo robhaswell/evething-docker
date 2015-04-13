@@ -1,2 +1,12 @@
-compose up
-docker run --volumes-from compose_web_1 --link compose_db_1:compose_db_1 -ti compose_web /opt/install.sh
+Installation
+------------
+
+To start evething, run:
+
+    docker-compose up -d
+
+On first run, you must initialise the datastores:
+
+    docker run --volumes-from compose_web_1 --link compose_db_1:compose_db_1 -ti compose_web /opt/install.sh
+
+This command must also be executed after each patch.

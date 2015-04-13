@@ -21,7 +21,7 @@ ADMINS = (
 
 FORCE_SCRIPT_NAME = b"/"
 
-# database configuration
+# database concomposeuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -80,7 +80,7 @@ STAGGER_APITASK_STARTUP = True
 PRICE_URL = 'http://goonmetrics.com/api/price_data/?station_id=60003760&type_id=%s'
 
 # Celery broker URL - http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#choosing-a-broker
-BROKER_URL = 'redis://fig_redis_1/'
+BROKER_URL = 'redis://compose_redis_1/'
 
 # Cache for various things. You really want to use memcache if at all
 # possible, other caches do not guarantee atomic increments.
@@ -90,7 +90,7 @@ CACHES = {
     'default': {
         #'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'fig_memcached_1:11211',
+        'LOCATION': 'compose_memcached_1:11211',
         'KEY_PREFIX': 'evething_',
     }
 }
