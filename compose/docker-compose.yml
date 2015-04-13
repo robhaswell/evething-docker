@@ -15,8 +15,10 @@ web:
       - mail
       - redis
       - memcached
+  restart: always
 db:
   image: postgres
+  restart: always
 lb:
   build: nginx
   ports:
@@ -25,6 +27,7 @@ lb:
     - web
   volumes_from:
     - web
+  restart: always
 mail:
   image: elsdoerfer/exim-sender
   dns: # Docker's DNS is not compatible with Exim
@@ -32,10 +35,13 @@ mail:
         - 4.4.4.4
   environment:
     ALLOWED_HOSTS: "*"
+  restart: always
 redis:
   image: redis
+  restart: always
 memcached:
   image: sylvainlasnier/memcached
+  restart: always
 celery:
   image: fig_web # This is the web container's built image - depends on the directory name of fig.yml
   command: celery worker -A evething -B -Q et_high,et_medium,et_low -c 2 -b redis://fig_redis_1/
@@ -43,4 +49,5 @@ celery:
   links:
     - db
     - redis
+  restart: always
 # vim: set sw=2 ts=2 sts=2 expandtab:
