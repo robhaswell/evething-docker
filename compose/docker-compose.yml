@@ -1,5 +1,5 @@
 #
-# Example fig.yml to deploy evething.
+# Example docker-compose.yml to deploy evething.
 #
 
 web:
