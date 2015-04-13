@@ -43,8 +43,8 @@ memcached:
   image: sylvainlasnier/memcached
   restart: always
 celery:
-  image: fig_web # This is the web container's built image - depends on the directory name of fig.yml
-  command: celery worker -A evething -B -Q et_high,et_medium,et_low -c 2 -b redis://fig_redis_1/
+  image: compose_web # This is the web container's built image - depends on the directory name of docker-compose.yml
+  command: celery worker -A evething -B -Q et_high,et_medium,et_low -c 2 -b redis://compose_redis_1/
   working_dir: /opt/evething
   links:
     - db
