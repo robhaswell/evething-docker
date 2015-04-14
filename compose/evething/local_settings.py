@@ -28,8 +28,8 @@ DATABASES = {
         'NAME': 'postgres',                       # Or path to database file if using sqlite3.
         'USER': 'postgres',                       # Not used with sqlite3.
         'PASSWORD': '',                   # Not used with sqlite3.
-        'HOST': os.environ.get(b"FIG_DB_1_PORT_5432_TCP_ADDR"),                       # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': os.environ.get(b"FIG_DB_1_PORT_5432_TCP_PORT"),                       # Set to empty string for default. Not used with sqlite3.
+        'HOST': os.environ.get(b"COMPOSE_DB_1_PORT_5432_TCP_ADDR"),                       # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': os.environ.get(b"COMPOSE_DB_1_PORT_5432_TCP_PORT"),                       # Set to empty string for default. Not used with sqlite3.
     },
     # this database should contain a current version of the Static Data Export
     'import': {
