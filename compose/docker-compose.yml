@@ -10,11 +10,11 @@ web:
     ADMIN_NAME: Administrator
     ADMIN_EMAIL: someone@somewhere.com
     SECRET_KEY: "change this"
-    links:
-      - db
-      - mail
-      - redis
-      - memcached
+  links:
+    - db
+    - mail
+    - redis
+    - memcached
   restart: always
 db:
   image: postgres
